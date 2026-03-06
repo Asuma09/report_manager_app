@@ -1,0 +1,30 @@
+<h1>「<%= @task.title %>」に資料を追加</h1>
+
+<% # 親（@task）と子（@datum）をセットで渡すのがポイント！ %>
+<%= form_with model: [@task, @datum] do |f| %>
+  
+  <div>
+    <%= f.label :data_type, "資料の種類" %><br>
+    <% # セレクトボックス（プルダウン）を作る %>
+    <%= f.select :data_type, [["URL（Webサイト）", "url"], ["画像", "image"], ["Wordファイル", "word"]] %>
+  </div>
+
+  <div style="margin-top: 15px;">
+    <%= f.label :content, "URL（Webサイトの場合）" %><br>
+    <%= f.text_field :content, placeholder: "https://..." %>
+  </div>
+
+  <div style="margin-top: 15px;">
+    <%= f.label :file, "ファイル（画像・Wordの場合）" %><br>
+    <% # ファイルをアップロードするためのボタン %>
+    <%= f.file_field :file %>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <%= f.submit "資料を登録する" %>
+  </div>
+
+<% end %>
+
+<hr>
+<%= link_to "レポート一覧に戻る", tasks_path %>
