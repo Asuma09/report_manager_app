@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Rails本体
-gem "rails", "~> 8.0.4" # バージョンは今のままでOK
+gem "rails", "~> 8.1.2" # バージョンは今のままでOK
 
 # 開発(development)とテスト(test)だけで使うツール
 group :development, :test do
