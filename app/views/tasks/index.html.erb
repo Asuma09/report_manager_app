@@ -1,27 +1,37 @@
-<h1>レポート一覧</h1>
+<div class="max-w-4xl mx-auto p-8">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold text-gray-800">レポート一覧</h1>
+    <%= link_to "＋ 新しいレポート", new_task_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition" %>
+  </div>
 
-<%= link_to "新しいレポートを追加", new_task_path %>
+  <div class="grid gap-6">
+    <% @tasks.each do |task| %>
+      <div class="bg-white shadow-md rounded-xl p-6 border border-gray-100">
+        <div class="flex justify-between items-start mb-4">
+          <h2 class="text-xl font-semibold text-gray-700"><%= task.title %></h2>
+          <div class="space-x-2 text-sm">
+            <%= link_to "編集", edit_task_path(task), class: "text-gray-500 hover:text-blue-600" %>
+            <%= link_to "削除", task_path(task), 
+                        data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, 
+                        class: "text-red-400 hover:text-red-600" %>
+          </div>
+        </div>
 
-<hr>
-
-<ul>
-  <% @tasks.each do |task| %>
-    <li style="margin-bottom: 20px;">
-      <strong><%= task.title %></strong> 
-      <%= link_to "[編集]", edit_task_path(task) %>
-      <%= link_to "[資料追加]", new_task_datum_path(task) %>
-      <%= link_to "[削除]", task_path(task), 
-                  data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, 
-                  style: "color: red;" %>
-      <ul>
-        <% task.data_list.each do |datum| %>
-          <li>
+        <div class="space-y-2">
+          <% task.data_list.each do |datum| %>
             <% opener = datum.opener %>
-            <%= opener.icon %> 
-            <%= link_to opener.link_text, opener.target_path, target: "_blank" %>
-          </li>
-        <% end %>
-      </ul>
-    </li>
-  <% end %>
-</ul>
+            <div class="flex items-center p-3 bg-gray-50 rounded-lg group hover:bg-gray-100 transition">
+              <span class="mr-3 text-xl"><%= opener.icon %></span>
+              <%= link_to opener.link_text, opener.target_path, target: "_blank", class: "text-blue-600 hover:underline flex-grow" %>
+              <span class="text-xs text-gray-400 uppercase font-bold"><%= datum.data_type %></span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mt-4 pt-4 border-t border-gray-50 text-right">
+          <%= link_to "資料を追加する", new_task_datum_path(task), class: "text-sm text-blue-500 hover:text-blue-700 font-medium" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
