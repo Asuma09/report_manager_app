@@ -6,7 +6,7 @@ gem "rails", "~> 8.0.4" # バージョンは今のままでOK
 # 開発(development)とテスト(test)だけで使うツール
 group :development, :test do
   # 自分のPCでは SQLite3 を使う
-  gem "sqlite3", "~> 1.4"
+  gem "sqlite3", "~> 2.9"
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
