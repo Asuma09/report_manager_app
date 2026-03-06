@@ -10,22 +10,18 @@
       <strong><%= task.title %></strong> 
       <%= link_to "[編集]", edit_task_path(task) %>
       <%= link_to "[資料追加]", new_task_datum_path(task) %>
-      <%= link_to "[削除]", task_path(task), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, style: "color: red;" %>
-      
-     <ul>
+      <%= link_to "[削除]", task_path(task), 
+                  data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, 
+                  style: "color: red;" %>
+      <ul>
         <% task.data_list.each do |datum| %>
           <li>
-            【<%= datum.data_type %>】
-            
-            <%# datum.opener で自動的に専用の案内人（UrlOpenerなど）が呼び出される！ %>
             <% opener = datum.opener %>
-            
-            <%# あとは案内人に「文字」と「飛び先」を聞くだけ。if文は一切不要！ %>
+            <%= opener.icon %> 
             <%= link_to opener.link_text, opener.target_path, target: "_blank" %>
           </li>
         <% end %>
       </ul>
-
     </li>
   <% end %>
 </ul>
