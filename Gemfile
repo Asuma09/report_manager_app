@@ -31,5 +31,5 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "sprockets-rails"
 gem "jbuilder", "~> 2.11"
-gem "tzinfo-data", platforms: %i[ mri mswin mscvc mingw x64_mingw jruby ]
+gem "tzinfo-data", platforms: [ :mingw, :mswin, :x64_mingw, :jruby ]
 gem "bootsnap", require: false
