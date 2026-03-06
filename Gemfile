@@ -25,7 +25,7 @@ end
 gem "aws-sdk-s3", require: false
 
 # その他の共通Gem
-gem "puma", "~> 5.0"
+gem "puma", ">= 6.0"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
