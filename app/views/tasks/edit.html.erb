@@ -1,2 +1,18 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<h1>レポートの編集</h1>
+
+<% # new.html.erb とほぼ同じですが、Railsが自動で「上書きモード」にしてくれます %>
+<%= form_with model: @task do |f| %>
+  
+  <div>
+    <%= f.label :title, "レポート名" %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <%= f.submit "更新する" %>
+  </div>
+
+<% end %>
+
+<hr>
+<%= link_to "レポート一覧に戻る", tasks_path %>
