@@ -30,6 +30,6 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "sprockets-rails"
-gem "jbuilder", "~> 2.11"
+gem "jbuilder", "~> 2.15"
 gem "tzinfo-data", platforms: [ :mingw, :mswin, :x64_mingw, :jruby ]
 gem "bootsnap", require: false
